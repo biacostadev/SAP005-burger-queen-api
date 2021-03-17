@@ -1,0 +1,34 @@
+{  
+  "usuarios": [
+    {
+      "uid": 1,
+      "username": "Bia Costa",
+      "email": "bia@costa.com"
+    },
+    {
+      "uid": 2,
+      "username": "Kah Front",
+      "email": "kah@front.com"
+    },
+    {
+      "uid": 3,
+      "username": "Xu Souza",
+      "email": "xu@souza.com"
+    },
+    {
+      "uid": 4,
+      "username": "Nay Fugii",
+      "email": "nay@fugii.com"
+    },
+    {
+      "uid": 5,
+      "username": "Lu Santana",
+      "email": "lu@santana.com"
+    },
+    {
+      "uid": 6,
+      "username": "Leila Alves",
+      "email": "leila@alves.com"
+    }
+  ]
+}
