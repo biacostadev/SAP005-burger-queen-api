@@ -3,6 +3,8 @@
 
 let users = require('./users.json')
 
+const dataUser = []
+
 const getAllUsers = (req, res) => {
   console.log("você também pode utilizar o console para visualizar =)")
   res.send(users)
@@ -16,24 +18,15 @@ const getUserById = (req, res) => {
   res.send(id);
 }
 
-// const createNewUser = (req, res) => {
-//   fs.readFile('./users.json', 'utf8', function(data){
-//     const obj = JSON.parse(data);
-//      req.body.uid = obj.users.length + 1;
- 
-//      obj.users.push(req.body);
-     
-//      res.json(response);
-//   })
-
-//   // const newUser = JSON.parse(users.usuarios.push({
-//   //   "uid": "req.params.body.uid",
-//   //   "username": "req.params.body.username",
-//   //   "email": "req.params.body.email"  
-//   // }))
-//   // console.log(newUser)
-//   // res.send(newUser);
-// }
+const createNewUser = (req, res) =>{
+  if(!req.body.username || !req.body.email){
+    res.status(400).send({message: "insufficient registration information"})
+  }else{
+    dataUser.push(req.body)
+     res.status(201).send(dataUser)
+     console.log(dataUser)
+  }
+}
 
 module.exports = {
   getAllUsers,
