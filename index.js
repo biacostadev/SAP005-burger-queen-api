@@ -10,8 +10,15 @@ const app = express();
 app.use(express.json());
 app.use(routes);
 
-app.get('/', (req, res) => {
-  res.send({app: 'hello Bia!'})
-})
+// app.get('/', (req, res) => {
+//   res.send({app: 'hello Bia!'})
+// })
+
+//error handling
+app.use((err, req, res, next) => {
+  if (process.env.NODE_ENV === "production")
+    res.status(500).json({ error: "internal server error" });
+  else return next(err);
+});
 
 app.listen(PORT);
