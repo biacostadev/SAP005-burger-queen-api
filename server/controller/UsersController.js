@@ -1,82 +1,101 @@
-// aqui vai o código que acessa o banco de dados
+const models = require("../db/models");
 
-const bcrypt = require("bcrypt");
-
-const UserModel = require("../db/models/UsersModel");
-
-module.exports = {
-  all(req, res, next) {
-    UserModel.findAll({
-        attributes: {
-          exclude: ['password']
-        }
+const all = async (req, res) => {
+  try {
+    const allUsers = await models.Users.findAll({
+      raw: true,
+      attributes: {
+        exclude: ['password']
+      }
+    })
+    if (allUsers.length > 0) {
+      return res.status(200).json(allUsers)
+    } else {
+      return res.json({
+        message: "erro ao processar requisição"
       })
-      .then((result) => {
-        res.json(result);
-      })
-      .catch(next);
-  },
+    }
+  } catch (err) {
+    res.json({
+      message: err.message
+    })
+  }
+}
 
-  byId(req, res, next) {
-    UserModel.findAll({
-        where: {
-          id: req.params.id
-        },
-        attributes: {
-          exclude: ['password']
-        }
+const byId = async (req, res) => {
+  try {
+    const userById = await models.Users.findAll({
+      raw: true,
+      where: {
+        id: req.params.id
+      },
+      attributes: {
+        exclude: ['password']
+      }
+    })
+    if (userById.length > 0) {
+      res.status(200).json(userById)
+    } else {
+      res.json({
+        message: err.message
       })
-      .then((result) => {
-        res.json(result);
-      })
-      .catch(next);
-  },
+    }
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+}
 
-  create(req, res, next) {
-    const {
-      userName,
-      password,
-      email,
-      role,
-      restaurant
-    } = req.body;
+const create = async (req, res) => {
+  try {
+    const newUser = await models.Users.create({
+      userName: req.body.userName,
+      email: req.body.email,
+      password: req.body.password,
+      role: req.body.role,
+      restaurant: req.body.restaurant
+    })
+    res.status(201).json(newUser)
+  } catch (err) {
+    console.log(err.message)
+  }
+};
 
-    UserModel.create({
-        userName,
-        password,
-        email,
-        role,
-        restaurant
-      })
-      .then((result) => {
-        res.status(201).json(result); //return with ID -> 201 (CREATED)
-      })
-      .catch(next);
-  },
-
-  update(req, res, next) {
-    UserModel.update({ userName: req.body.userName }, {
+const update = async (req, res) => {
+  try {
+    const updateUser = await models.Users.update({
+      userName: req.body.userName,
+      email: req.body.email,
+      password: req.body.password,
+      role: req.body.role,
+      restaurant: req.body.restaurant
+    }, {
       where: {
         id: req.params.id
       }
     })
-      .then((result) => {
-        res.status(201).json(result); //return with ID -> 201 (CREATED)
-      })
-      .catch(next);
-  },
-
-  destroy(req, res, next) {
-    UserModel.destroy({
-        where: {
-          id: req.params.id
-        }
-      })
-      .then((result) => {
-        res.status(201).json(result); //return with ID -> 201 (CREATED)
-      })
-      .catch(next);
+    res.status(200).json(updateUser)
+  } catch (err) {
+    console.log(err.message)
   }
-
-
 };
+
+const destroy = async (req, res) => {
+  try {
+    const destroyUser = await models.Users.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    res.status(200).json(destroyUser)
+  } catch (err) {
+    console.log(err.message)
+  }
+};
+
+module.exports = {
+  all,
+  create,
+  byId,
+  update,
+  destroy
+}

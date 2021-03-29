@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const bcrypt = require("bcrypt");
 
-const User = require("../models/UsersModel");
+const User = require("../models/users");
 
 User.create({
   userName: "admin",
