@@ -1,10 +1,9 @@
 const models = require("../db/models");
+const ProductsServices = require("../services/ProductsServices");
 
 const all = async (req, res) => {
   try {
-    const allProducts = await models.Products.findAll({
-      raw: true,
-    })
+    const allProducts = await ProductsServices.getProducts()
     if (allProducts.length > 0) {
       res.status(200).json(allProducts)
     } else {
@@ -21,19 +20,9 @@ const all = async (req, res) => {
 
 const byId = async (req, res) => {
   try {
-    const productById = await models.Products.findAll({
-      raw: true,
-      where: {
-        id: req.params.id
-      }
-    })
-    if (productById.length > 0) {
-      res.status(200).json(productById)
-    } else {
-      res.status(400).json({
-        message: "erro ao processar requisição"
-      })
-    }
+    const productid = req.params.productid
+    const productById = await ProductsServices.getProductsById(productid)
+    res.status(200).json(productById)
   } catch (err) {
     console.log(err.message)
   }
@@ -41,14 +30,15 @@ const byId = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-    const newProduct = await models.Products.create({
+    const newProductBody = {
       name: req.body.name,
       price: req.body.price,
       flavor: req.body.flavor,
       complement: req.body.complement,
       type: req.body.type,
       subType: req.body.subType
-    })
+    }
+    const newProduct = await ProductsServices.createProduct(newProductBody)
     res.status(201).json(newProduct)
   } catch (err) {
     res.status(400).json({
@@ -61,7 +51,7 @@ const create = async (req, res) => {
 const createMany = async (req, res) => {
   try {
     const newArray = req.body
-    const newProduct = await models.Products.bulkCreate(newArray)
+    const newProduct = await ProductsServices.createManyProducts(newArray)
     res.status(201).json(newProduct)
   } catch (err) {
     res.status(400).json({
@@ -96,11 +86,8 @@ const update = async (req, res) => {
 
 const destroy = async (req, res) => {
   try {
-    await models.Products.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
+    const productId = req.params.productid
+    await ProductsServices.destroyProduct(productId)
     res.status(200).json({
       message: 'produto excluído',
     })

@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         as: 'orders',
         foreignKey: 'orderId',
         onDelete: 'CASCADE',
+        hooks: true
       });
       Orders.belongsTo(models.Users, {
         foreignKey: 'userId',

@@ -64,23 +64,21 @@ const OrderServices = {
   async destroyOrder(orderId) {
     return await db.Orders.destroy({
       where: {
-        orderId: orderId
+        id: orderId
       },
-      include: [{
-          model: db.Products,
-          as: 'orders',
-          required: false,
-          through: {
-            model: db.ProductsOrders,
-            as: 'orderProductsQtd',
-          }
-        },
-        {
-          model: db.Users,
-          required: false,
-        }
-      ]
+      cascade:true
     });
+  },
+
+  async updateOrder(orderId, newStatus) {
+    return await db.Orders.update({
+      status: newStatus,
+    }, {
+      where: {
+        id: orderId
+      },
+      cascade:true
+    })
   },
 
 }

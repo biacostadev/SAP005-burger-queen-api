@@ -1,5 +1,4 @@
 const OrderServices = require("../services/orderServices");
-const model = require('../db/models')
 
 const OrdersController = {
   async all(req, res) {
@@ -87,63 +86,36 @@ const OrdersController = {
   async destroy(req, res) {
     try {
       const orderId = req.params.orderId
-      let order = await model.Orders.findAll({
-        where: {
-          id: orderId
-        },
-        include: [{
-            model: model.Products,
-            as: 'orders',
-            required: false,
-            attributes: ['id'],
-            through: {
-              model: model.ProductsOrders,
-              as: 'orderProductsQtd',
-            }
-          },
-          {
-            model: model.Users,
-            required: false,
-            attributes: ['id'],
-          }
-        ]
-      });
+      let order = await OrderServices.getOrdersById(orderId);
 
-      const orderUserId = order.map(user => {
-        const userId = user.userId
-        model.Users.destroy({
-          where: {
-            id: userId
-          }
+      if (order) {
+        await OrderServices.destroyOrder(orderId);
+      res.status(200).json({message: "Pedido deletado com sucesso"});
+      } else {
+        return res.json({
+          message: "erro ao processar requisição"
         })
-      })
+      }
+    } catch (error) {
+      res.status(400).json(error)
+      console.log(error)
+    }
+  },
 
-      order = await order.map(products => {
-        return {
-          "products": products.orders.map(product => {
-            const produtosId  = product.id
-            // return produtosId
+  async update(req, res) {
+    try {
+      const orderId = req.params.orderId
+      const newStatus = req.body.status
+      let order = await OrderServices.getOrdersById(orderId);
 
-            model.ProductsOrders.destroy({
-              where: {
-                id: produtosId
-              }
-            })
-          })
-        }
-      });
-
-
-      await model.Orders.destroy({
-        where: {
-          id: orderId
-        }
-      })
-      .save()
-
-      console.log(order)
-
-      res.status(200).json(order);
+      if (order) {
+        await OrderServices.updateOrder(orderId, newStatus);
+      res.status(204).json({message: "pedido atualizado com sucesso"});
+      } else {
+        return res.json({
+          message: "erro ao processar requisição"
+        })
+      }
     } catch (error) {
       res.status(400).json(error)
       console.log(error)

@@ -5,6 +5,19 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class ProductsOrders extends Model {
     static associate(models) {
+      models.Orders.belongsToMany(models.Products, {
+        through: 'ProductsOrders',
+        foreignKey: 'orderId',
+        onDelete: 'CASCADE',
+        hooks: true
+      });
+
+      models.Products.belongsToMany(models.Orders, {
+        through: 'ProductsOrders',
+        foreignKey: 'productId',
+        onDelete: 'CASCADE',
+        hooks: true
+      });
     }
   };
   ProductsOrders.init({

@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
         through: 'ProductsOrders',
         as: 'orders',
         foreignKey: 'productId',
+        onDelete: 'CASCADE',
+        hooks: true
       });
     }
   };
