@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Burger Hunger API",
-    "description": "API desenvolvida para aplicação web da hamburgueria Burger Hunger. Para utilizar qualquer endpoint você percisará de um token, que pode ser gerado no endpoint /login com o e-mail l@l.com e a senha '123456",
+    "description": "API desenvolvida para aplicação web da hamburgueria Burger Hunger. Para utilizar qualquer endpoint você percisará de um token, que pode ser gerado no endpoint /auth com o e-mail l@l.com e a senha '123456",
     "contact": {
       "email": "anabeatrizcosta.o@gmail.com",
       "url": "https://github.com/biacostadev"
