@@ -13,7 +13,7 @@ const doc = {
       "url": "https://github.com/biacostadev"
     }
   },
-  host: "https://testando-db.herokuapp.com/",
+  host: "https://testando-db.herokuapp.com",
   basePath: "/",
   schemes: ['https'],
   consumes: ['application/json'],
