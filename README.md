@@ -1,7 +1,6 @@
 <h1 align="center">Burger Hunger API</p>
 
 <h4>REST API para a solução web da hamburgueria Burger Hunger.</h4>
-<h4>Para acessar a documentação da API clique no link: [Burger Hunger API](https://testando-db.herokuapp.com/doc/)</h4>
 
 ---
 
@@ -14,8 +13,8 @@
 
 ## 1. Resumo do Projeto
 
-A solução web para a hamburgueria Burger Hunger foi criada anteriormente(pode ser acessada clicando [aqui](https://burgerhunger.vercel.app/), utilizando uma REST API já existente, disponibilizada pela equipe técnica da Laboratória.
-Neste projeto foi proposta a criação de uma nova REST API, exclusiva para a hamburgueria, que atendesse todas as necessidades do fluxo de trabalho dos funcionários no dia a dia:
+A solução web para a hamburgueria Burger Hunger foi criada anteriormente (pode ser acessada clicando [aqui](https://burgerhunger.vercel.app/)), utilizando uma REST API já existente, disponibilizada pela equipe técnica da Laboratória.
+Neste projeto foi proposta a criação de uma nova REST API (sua documentação pode ser acessada clicando [aqui](https://testando-db.herokuapp.com/)), exclusiva para a hamburgueria, que atendesse todas as necessidades do fluxo de trabalho dos funcionários no dia a dia:
  - criação e atualização de cadastro para novos funcionários,
  - anotação dos pedidos,
  - visualização do pedido pela equipe da cozinha,
@@ -23,6 +22,7 @@ Neste projeto foi proposta a criação de uma nova REST API, exclusiva para a ha
 
 ## 2. Endpoints disponíveis
 #### `[ Base URL: testando-db.herokuapp.com/ ]`
+#### `[ Documentação da API: https://testando-db.herokuapp.com/ ]`
 
 ### 2.1 `/auth`
 
@@ -31,10 +31,10 @@ Neste projeto foi proposta a criação de uma nova REST API, exclusiva para a ha
 ### 2.2 `/users`
 
 * [x] `GET /users`
-* [x] `GET /users/:uid`
+* [x] `GET /users/:userId`
 * [x] `POST /users`
-* [x] `PATCH /users/:uid`
-* [x] `DELETE /users/:uid`
+* [x] `PATCH /users/:userId`
+* [x] `DELETE /users/:userId`
 
 ### 2.3 `/products`
 
