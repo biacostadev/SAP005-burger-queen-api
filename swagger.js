@@ -14,6 +14,7 @@ const doc = {
     }
   },
   host: "testando-db.herokuapp.com",
+  basePath: "/",
   schemes: ['https'],
   consumes: ['application/json'],
   produces: ['application/json'],
