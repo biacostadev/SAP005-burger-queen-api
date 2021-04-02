@@ -1,7 +1,7 @@
 <h1 align="center">Burger Hunger API</p>
 
-`REST API  a solução web da hamburgueria Burger Hunger.
-Para acessar a documentação da API clique no link: [Burger Hunger API](https://testando-db.herokuapp.com/doc/)`
+#### `REST API  a solução web da hamburgueria Burger Hunger.`
+#### `Para acessar a documentação da API clique no link: [Burger Hunger API](https://testando-db.herokuapp.com/doc/)`
 
 ## Índice
 
