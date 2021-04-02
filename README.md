@@ -1,16 +1,16 @@
 <h1 align="center">Burger Hunger API</p>
 
-#### `REST API  a solução web da hamburgueria Burger Hunger.`
-#### `Para acessar a documentação da API clique no link: [Burger Hunger API](https://testando-db.herokuapp.com/doc/)`
+<h4>REST API para a solução web da hamburgueria Burger Hunger.</h4>
+<h4>Para acessar a documentação da API clique no link: [Burger Hunger API](https://testando-db.herokuapp.com/doc/)</h4>
+
+---
 
 ## Índice
 
 - [1. Resumo do Projeto](#1-resumo-do-projeto)
-- [2. Endpoints disponíveis](#2-endpoints-disponiveis)
+- [2. Endpoints disponíveis](#2-endpoints-disponíveis)
 - [3. Tecnologias Utilizadas](#3-tecnologias-utilizadas)
-- [4. Implementações Futuras](#3-implementacoes-futuras)
-
----
+- [4. Implementações Futuras](#4-implementações-futuras)
 
 ## 1. Resumo do Projeto
 
@@ -66,7 +66,6 @@ Neste projeto foi proposta a criação de uma nova REST API, exclusiva para a ha
  - Swagger
  - Insomnia
 
----
 ## 4. Implementações Futuras
 
 -   Testes unitários
