@@ -4,10 +4,10 @@ const AuthController = require('../controller/AuthController');
 
 const router = Router()
 
-router.get("/users", AuthController.auth, UserController.all);
-router.get('/users/:userId', AuthController.auth, UserController.byId);
-router.post('/users', UserController.create);
-router.patch('/users/:userId', AuthController.auth, UserController.update);
-router.delete('/users/:userId', AuthController.auth, UserController.destroy);
+router.get("/", AuthController.auth, UserController.all);
+router.get('/:userId', AuthController.auth, UserController.byId);
+router.post('/', UserController.create);
+router.patch('/:userId', AuthController.auth, UserController.update);
+router.delete('/:userId', AuthController.auth, UserController.destroy);
 
 module.exports = router
