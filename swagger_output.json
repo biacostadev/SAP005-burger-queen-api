@@ -9,7 +9,7 @@
       "url": "https://github.com/biacostadev"
     }
   },
-  "host": "https://testando-db.herokuapp.com/",
+  "host": "testando-db.herokuapp.com/",
   "basePath": "/",
   "tags": [
     {
