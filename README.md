@@ -14,7 +14,7 @@
 ## 1. Resumo do Projeto
 
 A solução web para a hamburgueria Burger Hunger foi criada anteriormente (pode ser acessada clicando [aqui](https://burgerhunger.vercel.app/)), utilizando uma REST API já existente, disponibilizada pela equipe técnica da Laboratória.
-Neste projeto foi proposta a criação de uma nova REST API (sua documentação pode ser acessada clicando [aqui](https://testando-db.herokuapp.com/)), exclusiva para a hamburgueria, que atendesse todas as necessidades do fluxo de trabalho dos funcionários no dia a dia:
+Neste projeto foi proposta a criação de uma nova REST API (sua documentação pode ser acessada clicando [aqui](https://testando-db.herokuapp.com/doc)), exclusiva para a hamburgueria, que atendesse todas as necessidades do fluxo de trabalho dos funcionários no dia a dia:
  - criação e atualização de cadastro para novos funcionários,
  - anotação dos pedidos,
  - visualização do pedido pela equipe da cozinha,
